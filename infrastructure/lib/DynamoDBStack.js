@@ -9,7 +9,6 @@ export default class DynamoDBStack extends sst.Stack {
     const app = this.node.root;
 
     const openJobsTable = new dynamodb.Table(this, "OpenJobsTable", {
-      tableName: "OpenJobsTable",
       billingMode: dynamodb.BillingMode.PROVISIONED, // Use on-demand billing mode
       sortKey: { name: "title", type: dynamodb.AttributeType.STRING },
       partitionKey: { name: "company", type: dynamodb.AttributeType.STRING },
@@ -18,7 +17,6 @@ export default class DynamoDBStack extends sst.Stack {
     });
 
     const usersTable = new dynamodb.Table(this, "usersTable", {
-      tableName: "usersTable",
       billingMode: dynamodb.BillingMode.PROVISIONED,
       partitionKey: { name: "userId", type: dynamodb.AttributeType.STRING },
       writeCapacity: 50,

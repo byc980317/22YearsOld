@@ -1,7 +1,7 @@
 import DynamoDBStack from "./DynamoDBStack";
-import CognitStack from "./CognitoStack";
+import CognitoStack from "./CognitoStack";
 
 export default function main(app) {
   new DynamoDBStack(app, "dynamodb");
-  new CognitStack(app, "cognito")
+  new CognitoStack(app, "cognito");
 }

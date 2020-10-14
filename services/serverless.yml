@@ -45,7 +45,7 @@ provider:
 
 functions:
   search:
-    handler: search.main
+    handler: handlers/search.main
     events:
       - http:
           path: userSearches

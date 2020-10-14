@@ -81,15 +81,15 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "../../../search.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "../../../handlers/search.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "../../../search.js":
-/*!*******************************************************************************!*\
-  !*** /Users/KYoung/Desktop/projects/22yearsold/22YearsOld/services/search.js ***!
-  \*******************************************************************************/
+/***/ "../../../handlers/search.js":
+/*!****************************************************************************************!*\
+  !*** /Users/KYoung/Desktop/projects/22yearsold/22YearsOld/services/handlers/search.js ***!
+  \****************************************************************************************/
 /*! exports provided: main */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -98,23 +98,59 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "main", function() { return main; });
 /* harmony import */ var source_map_support_register__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! source-map-support/register */ "../../source-map-support/register.js");
 /* harmony import */ var source_map_support_register__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(source_map_support_register__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _libs_handler__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../libs/handler */ "../../../libs/handler.js");
 
-function main(event, context, callback) {
-  // Request body is passed in as a JSON encoded string in 'event.body'
-  const headers = {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Credentials": true
-  };
-  const response = {
+
+const main = Object(_libs_handler__WEBPACK_IMPORTED_MODULE_1__["default"])(async (event, context) => {
+  return {
     statusCode: 200,
-    hearders: headers,
     body: {
       company: "Google",
       title: "Senior Principal Scientist",
       level: "L8"
     }
   };
-  callback(null, response);
+});
+
+/***/ }),
+
+/***/ "../../../libs/handler.js":
+/*!*************************************************************************************!*\
+  !*** /Users/KYoung/Desktop/projects/22yearsold/22YearsOld/services/libs/handler.js ***!
+  \*************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return handler; });
+/* harmony import */ var source_map_support_register__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! source-map-support/register */ "../../source-map-support/register.js");
+/* harmony import */ var source_map_support_register__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(source_map_support_register__WEBPACK_IMPORTED_MODULE_0__);
+
+function handler(lambda) {
+  return async function (event, context) {
+    let result;
+
+    try {
+      // Run the Lambda
+      result = await lambda(event, context);
+    } catch (e) {
+      result = {
+        statusCode: 500,
+        body: {
+          error: e.message
+        }
+      };
+    } // Return HTTP response
+
+
+    return { ...result,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": true
+      }
+    };
+  };
 }
 
 /***/ }),
