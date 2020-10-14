@@ -1,5 +1,5 @@
 # NOTE: update this with your service name
-service: 22YearsOld
+service: api-22YearsOld
 
 # Create an optimized package for our functions 
 package:
@@ -52,3 +52,8 @@ functions:
           method: post
           cors: true
           authorizer: aws_iam
+
+# Create our resources with separate CloudFormation templates
+resources:
+  # API Gateway Errors
+  - ${file(resources/api-gateway-errors.yml)}
