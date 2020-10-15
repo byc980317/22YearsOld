@@ -1,16 +1,19 @@
 import React from 'react'
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
+
+import stringConstants from './Constants/Strings';
 
 const LoginForm = () => (
-  <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
-    <Grid.Column style={{ maxWidth: 450 }}>
-      <Header as='h2' color='teal' textAlign='center'>
-        <Image src='/logo.png' /> Log-in to your account
+  <Grid centered style={{ height: '100vh' }} verticalAlign='middle'>
+    <Grid.Column style={{ maxWidth: 350 }}>
+      <Header as='h2' color='black' textAlign='center'>
+        {stringConstants.LOGIN_PROMPT}
       </Header>
       <Form size='large'>
         <Segment stacked>
-          <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail address' />
+          <Form.Input label='Email address' fluid icon='user' iconPosition='left' placeholder='E-mail address' />
           <Form.Input
+            label='Password'
             fluid
             icon='lock'
             iconPosition='left'
@@ -18,13 +21,13 @@ const LoginForm = () => (
             type='password'
           />
 
-          <Button color='teal' fluid size='large'>
+          <Button color='green' fluid size='large'>
             Login
           </Button>
         </Segment>
       </Form>
-      <Message>
-        New to us? <a href='#'>Sign Up</a>
+      <Message style={{ textAlign: 'center' }}>
+        New to us? <a href='/signup'>Sign Up</a>
       </Message>
     </Grid.Column>
   </Grid>
