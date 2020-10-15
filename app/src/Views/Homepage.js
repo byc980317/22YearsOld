@@ -104,7 +104,7 @@ class DesktopContainer extends Component {
                 <Menu.Item as='a'>Company</Menu.Item>
                 <Menu.Item as='a'>Careers</Menu.Item>
                 <Menu.Item position='right'>
-                  <Button as='a' inverted={!fixed}>
+                  <Button as='a' inverted={!fixed} onClick={this.props.login}>
                     Log in
                   </Button>
                   <Button as='a' inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em' }}>
@@ -172,7 +172,7 @@ class MobileContainer extends Component {
                     <Icon name='sidebar' />
                   </Menu.Item>
                   <Menu.Item position='right'>
-                    <Button as='a' inverted>
+                    <Button as='a' inverted onClick={this.props.login}>
                       Log in
                     </Button>
                     <Button as='a' inverted style={{ marginLeft: '0.5em' }}>
@@ -196,14 +196,14 @@ MobileContainer.propTypes = {
   children: PropTypes.node,
 }
 
-const ResponsiveContainer = ({ children }) => (
+const ResponsiveContainer = ({ login, children }) => (
   /* Heads up!
    * For large applications it may not be best option to put all page into these containers at
    * they will be rendered twice for SSR.
    */
   <MediaContextProvider>
-    <DesktopContainer>{children}</DesktopContainer>
-    <MobileContainer>{children}</MobileContainer>
+    <DesktopContainer login={login}>{children}</DesktopContainer>
+    <MobileContainer login={login}>{children}</MobileContainer>
   </MediaContextProvider>
 )
 
@@ -211,8 +211,8 @@ ResponsiveContainer.propTypes = {
   children: PropTypes.node,
 }
 
-const HomepageLayout = () => (
-  <ResponsiveContainer>
+const HomepageLayout = (props) => (
+  <ResponsiveContainer login={props.login}>
     <Segment style={{ padding: '8em 0em' }} vertical>
       <Grid container stackable verticalAlign='middle'>
         <Grid.Row>
