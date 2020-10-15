@@ -4,6 +4,7 @@ import 'semantic-ui-css/semantic.min.css';
 
 import HomePage from './Views/Homepage';
 import Login from './Views/Login';
+import SignUp from './Views/SignUp';
 
 function App() {
 
@@ -14,6 +15,10 @@ function App() {
           <Login/>
         </Route>
 
+        <Route path="/signup">
+          <SignUp/>
+        </Route>
+        
         <Route path="/">
           <HomePage/>
         </Route>
