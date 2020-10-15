@@ -1,26 +1,25 @@
 import React from 'react'
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
-import { useHistory } from 'react-router-dom';
+import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
+
+import stringConstants from './Constants/Strings';
 
 const SignUpForm = () => {
-    const history = useHistory();
-
-    const gotoLogin = () => {
-        history.push("/login");
-    };
-
     return (
-    <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
-        <Grid.Column style={{ maxWidth: 450 }}>
-        <Header as='h2' color='teal' textAlign='center'>
-            {/* <Image src='./Images/login-logo.png' />  */}
-            Sign up your account
+    <Grid centered style={{ height: '100vh' }} verticalAlign='middle'>
+        <Grid.Column style={{ maxWidth: 350 }}>
+        <Header as='h2' color='black' textAlign='center'>
+            {stringConstants.SIGNUP_PROMPT}
         </Header>
         <Form size='large'>
             <Segment stacked>
-            <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail Address' />
-            {/* <Form.Input fluid icon='user' iconPosition='left' placeholder='Confirm E-mail Address' /> */}
             <Form.Input
+                label='Email'
+                fluid icon='user'
+                iconPosition='left'
+                placeholder='E-mail Address'
+            />
+            <Form.Input
+                label='Password'
                 fluid
                 icon='lock'
                 iconPosition='left'
@@ -28,6 +27,7 @@ const SignUpForm = () => {
                 type='password'
             />
             <Form.Input
+                label='Confirm password'
                 fluid
                 icon='lock'
                 iconPosition='left'
@@ -35,13 +35,13 @@ const SignUpForm = () => {
                 type='password'
             />
 
-            <Button color='teal' fluid size='large'>
+            <Button color='green' fluid size='large'>
                 Sign Up
             </Button>
             </Segment>
         </Form>
-        <Message>
-            Already Sign Up? <a href='#' onClick={gotoLogin}>Sign In</a>
+        <Message style={{ textAlign: 'center' }}>
+            Already Signed Up? <a href='/login'>Sign In</a>
         </Message>
         </Grid.Column>
     </Grid>
