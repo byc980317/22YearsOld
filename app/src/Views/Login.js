@@ -28,7 +28,13 @@ const SigninForm = () => {
   return (
     <Grid centered style={{ height: '100vh' }} verticalAlign='middle'>
       <Grid.Column style={{ maxWidth: 350 }}>
-        <Image />
+        <div style={{ textAlign: 'center' }}>
+          <Image
+            href='/'
+            src={require('../Images/login-logo.png')}
+            size='tiny'
+          />
+        </div>
         <Header as='h2' color='black' textAlign='center'>
           {stringConstants.SIGNIN_PROMPT}
         </Header>
