@@ -17,7 +17,7 @@ import {
   Visibility,
 } from 'semantic-ui-react'
 
-import stringConstants from '../Constants/Strings';
+import { strings } from '../Constants';
 
 const { MediaContextProvider, Media } = createMedia({
   breakpoints: {
@@ -35,7 +35,7 @@ const HomepageHeading = ({ mobile }) => (
   <Container text>
     <Header
       as='h1'
-      content={stringConstants.APP_TITLE}
+      content={strings.APP_TITLE}
       inverted
       style={{
         fontSize: mobile ? '2em' : '4em',
@@ -46,7 +46,7 @@ const HomepageHeading = ({ mobile }) => (
     />
     <Header
       as='h2'
-      content={stringConstants.HOME_SCREEN_PROMPT}
+      content={strings.HOME_SCREEN_PROMPT}
       inverted
       style={{
         fontSize: mobile ? '1.5em' : '1.7em',

@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
 import { Auth } from "aws-amplify"
-import stringConstants from '../Constants/Strings';
+import { strings } from '../Constants';
 
 const SignUpForm = () => {
     const [email, setEmail] = useState('');
@@ -35,7 +35,7 @@ const SignUpForm = () => {
     <Grid centered style={{ height: '100vh' }} verticalAlign='middle'>
         <Grid.Column style={{ maxWidth: 350 }}>
         <Header as='h2' color='black' textAlign='center'>
-            {stringConstants.SIGNUP_PROMPT}
+            {strings.SIGNUP_PROMPT}
         </Header>
         <Form size='large' onSubmit={handleSubmit}>
             <Segment stacked>
