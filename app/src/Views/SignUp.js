@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
 
-import stringConstants from './Constants/Strings';
+import stringConstants from '../Constants/Strings';
 
 const SignUpForm = () => {
     return (
@@ -41,7 +41,7 @@ const SignUpForm = () => {
             </Segment>
         </Form>
         <Message style={{ textAlign: 'center' }}>
-            Already Signed Up? <a href='/login'>Sign In</a>
+            Already Signed Up? <a href='/signin'>Sign In</a>
         </Message>
         </Grid.Column>
     </Grid>

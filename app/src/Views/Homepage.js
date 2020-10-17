@@ -17,7 +17,7 @@ import {
   Visibility,
 } from 'semantic-ui-react'
 
-import stringConstants from './Constants/Strings';
+import stringConstants from '../Constants/Strings';
 
 const { MediaContextProvider, Media } = createMedia({
   breakpoints: {
@@ -107,8 +107,8 @@ class DesktopContainer extends Component {
                 <Menu.Item as='a'>Company</Menu.Item>
                 <Menu.Item as='a'>Careers</Menu.Item> */}
                 <Menu.Item position='right'>
-                  <Button as='a' inverted={!fixed} onClick={this.props.login}>
-                    Log in
+                  <Button as='a' inverted={!fixed} onClick={this.props.signin}>
+                    Sign in
                   </Button>
                   <Button as='a' inverted={!fixed} onClick={this.props.signup} primary={fixed} style={{ marginLeft: '0.5em' }}>
                     Sign Up
@@ -158,7 +158,7 @@ class MobileContainer extends Component {
             <Menu.Item as='a'>Work</Menu.Item>
             <Menu.Item as='a'>Company</Menu.Item>
             <Menu.Item as='a'>Careers</Menu.Item>
-            <Menu.Item as='a'>Log in</Menu.Item>
+            <Menu.Item as='a'>Sign in</Menu.Item>
             <Menu.Item as='a'>Sign Up</Menu.Item>
           </Sidebar>
 
@@ -175,8 +175,8 @@ class MobileContainer extends Component {
                     <Icon name='sidebar' />
                   </Menu.Item>
                   <Menu.Item position='right'>
-                    <Button as='a' inverted onClick={this.props.login}>
-                      Log in
+                    <Button as='a' inverted onClick={this.props.signin}>
+                      Sign in
                     </Button>
                     <Button as='a' inverted onClick={this.props.signup} style={{ marginLeft: '0.5em' }}>
                       Sign Up
@@ -199,14 +199,14 @@ MobileContainer.propTypes = {
   children: PropTypes.node,
 }
 
-const ResponsiveContainer = ({ login, signup, children }) => (
+const ResponsiveContainer = ({ signin, signup, children }) => (
   /* Heads up!
    * For large applications it may not be best option to put all page into these containers at
    * they will be rendered twice for SSR.
    */
   <MediaContextProvider>
-    <DesktopContainer login={login} signup={signup}>{children}</DesktopContainer>
-    <MobileContainer login={login} signup={signup}>{children}</MobileContainer>
+    <DesktopContainer signin={signin} signup={signup}>{children}</DesktopContainer>
+    <MobileContainer signin={signin} signup={signup}>{children}</MobileContainer>
   </MediaContextProvider>
 )
 
@@ -216,8 +216,8 @@ ResponsiveContainer.propTypes = {
 
 const HomepageLayout = (props) => {
   const history = useHistory();
-  const gotoLogin = () => {
-    history.push("/login");
+  const gotoSignin = () => {
+    history.push("/signin");
   };
 
   const gotoSignup = () => {
@@ -225,7 +225,7 @@ const HomepageLayout = (props) => {
   }
 
   return (
-    <ResponsiveContainer login={gotoLogin} signup={gotoSignup}>
+    <ResponsiveContainer signin={gotoSignin} signup={gotoSignup}>
       {/* <Segment style={{ padding: '8em 0em' }} vertical>
         <Grid container stackable verticalAlign='middle'>
           <Grid.Row>

@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
+import { Image, Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
 import { Auth } from 'aws-amplify';
 
 
-import stringConstants from './Constants/Strings';
+import stringConstants from '../Constants/Strings';
 
-const LoginForm = () => {
+const SigninForm = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -28,8 +28,9 @@ const LoginForm = () => {
   return (
     <Grid centered style={{ height: '100vh' }} verticalAlign='middle'>
       <Grid.Column style={{ maxWidth: 350 }}>
+        <Image />
         <Header as='h2' color='black' textAlign='center'>
-          {stringConstants.LOGIN_PROMPT}
+          {stringConstants.SIGNIN_PROMPT}
         </Header>
         <Form size='large' onSubmit={handleSubmit}>
           <Segment stacked>
@@ -54,7 +55,7 @@ const LoginForm = () => {
             />
 
             <Button disabled={!validateForm()} color='green' fluid size='large' type='submit'>
-              Login
+              Sign In
             </Button>
           </Segment>
         </Form>
@@ -66,4 +67,4 @@ const LoginForm = () => {
   );
 }
 
-export default LoginForm
+export default SigninForm;
