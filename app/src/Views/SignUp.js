@@ -1,14 +1,14 @@
 import React from 'react'
 import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
 
-import stringConstants from '../Constants/Strings';
+import { strings } from '../Constants';
 
 const SignUpForm = () => {
     return (
     <Grid centered style={{ height: '100vh' }} verticalAlign='middle'>
         <Grid.Column style={{ maxWidth: 350 }}>
         <Header as='h2' color='black' textAlign='center'>
-            {stringConstants.SIGNUP_PROMPT}
+            {strings.SIGNUP_PROMPT}
         </Header>
         <Form size='large'>
             <Segment stacked>
