@@ -2,11 +2,13 @@ import React, {useState} from 'react'
 import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
 import { Auth } from "aws-amplify"
 import { strings } from '../Constants';
+import { useHistory } from 'react-router-dom';
 
 const SignUpForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const history = useHistory();
 
     function passwordMatch() {
         let match = password === confirmPassword;
@@ -19,13 +21,13 @@ const SignUpForm = () => {
 
     async function handleSubmit(event) {
         event.preventDefault();
-        
         try {
-          await Auth.signUp({
+          const {user} = await Auth.signUp({
             username:email,
             password,
           })
           alert("Sign up successfully");
+          history.push('/verification');
         } catch (error) {
           console.log("Error in sign up", error);
         }
@@ -81,4 +83,4 @@ const SignUpForm = () => {
     );
 }
 
-export default SignUpForm
+export default SignUpForm;
